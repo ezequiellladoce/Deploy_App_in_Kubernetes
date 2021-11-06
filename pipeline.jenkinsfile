@@ -1,0 +1,52 @@
+pipeline {
+    agent any 
+    }
+    stages{ 
+        stage('Clear Workspaces') {
+            steps {
+                sh 'pwd' 
+                sh 'ls -la'
+                cleanWs()
+                sh 'env'
+            }//step
+        }//stage 
+        stage('Clone Repo') {
+            steps{
+                sh 'pwd'
+                    sh 'pwd'
+                    checkout([$class: 'GitSCM', 
+                    branches: [[name: '*/main']], 
+                    doGenerateSubmoduleConfigurations: false, 
+                    extensions: [[$class: 'CleanCheckout']], 
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [
+                    [url: 'https://github.com/ezequiellladoce/flask-tutorial.git', credentialsId: '']
+                    ]]) 
+                    sh'ls'
+                }
+            } 
+        } //stage 
+        stage('Deploy') {
+            steps {
+            sh 'pwd' 
+            sh 'ls -l'
+                dir('flask-tutorial'){
+                    sh 'pwd'
+                    sh 'docker build -t flask-tutorial:latest'
+                    sh 'docker run -d -p 5000:5000 --name=flask-hello flask-tutorial'
+                }
+            }//steps
+        }  // stages    
+        stage('Deploy') {
+            steps {
+            sh 'pwd' 
+            sh 'ls -l'
+                dir('flask-tutorial'){
+                    sh 'pwd'
+                    sh 'kubectl apply deployment.yaml'
+                    sh 'kubectl expose deployment hello-world --type=NodePort --name=example-service-hello-word'
+                }
+            }//steps
+        }  // stages
+}//pipeline
+
