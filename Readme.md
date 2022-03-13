@@ -117,6 +117,29 @@ docker push ezequielllado/deploy_1:flask-tutorial
 di 
 ```
 
+#### Install kind
+
+```
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin
+
+```
+Test  the installation
+
+```
+kind version
+kind v0.10.0 go1.15.7 linux/amd64
+```
+Install king cluster in your local machine
+
+```
+kind create cluster --config=config.yaml
+```
+
+
+
+
 
 
 
