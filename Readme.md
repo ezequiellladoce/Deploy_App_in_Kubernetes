@@ -6,7 +6,7 @@ In this repository we will see how to deploy and  automate a single rest api apl
 
 - Flask to create the aplication
 - Docker to package the aplication
-- Docker registry to stores the  Docker images.
+- Docker hub to stores the  Docker images.
 - Kubectl to expose the aplication
 - Jenkins to automathe the deployment
 - Git to store and version control of the code
@@ -69,21 +69,82 @@ apt install python3-pip
 
 1) To build the image:
 
-```
-docker build -t flask-tutorial:latest .
-```
+  ```
+  docker build -t flask-tutorial:latest .
+  ```
+
+  ```
+  docker run -d -p 5000:5000 --name=flask-hello flask-tutorial
+  ```
+
+2) To test Open browser and put
+
+  ```
+  http://localhost:5000/helloworld
+  ```
+
+3) In the browser you will get
+
+    insertar imagen
+docker  .
+4) Tag the Image
 
 ```
-docker run -d -p 5000:5000 --name=flask-hello flask-tutorial
-```
-
-2) To test Open browser 
+docker tag flask-tutorial deploy_1/v1.0
 
 ```
-http://localhost:5000/helloworld
+5) Push the Image
+
+Retag the Docker image  as per the docker hub repository name
+
+```
+docker tag rest-api ezequielllado/deploy_1:V0.0.0.1
+```
+Log in docker hub
+
+```
+docker login 
+
+Login with your Docker ID
+Username : 
+Password:
+
+```
+docker push ezequielllado/deploy_1:V0.0.0.1
+
+
+docker push ezequielllado/deploy_1:flask-tutorial
+di 
 ```
 
-3) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
 
 
 2-	Package the application in a Docker container using a Dockerfile
