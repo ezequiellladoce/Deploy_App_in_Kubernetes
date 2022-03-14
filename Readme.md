@@ -110,11 +110,13 @@ Username :
 Password:
 
 ```
+
+Pushing the image to docker registry
+ 
+```
+
 docker push ezequielllado/deploy_1:V0.0.0.1
 
-
-docker push ezequielllado/deploy_1:flask-tutorial
-di 
 ```
 
 #### Install kind
@@ -131,11 +133,30 @@ Test  the installation
 kind version
 kind v0.10.0 go1.15.7 linux/amd64
 ```
-Install king cluster in your local machine
+Install king cluster in your local machine 
 
 ```
 kind create cluster --config=config.yaml
+
 ```
+Create the resurces
+
+```
+kubectl apply -f deployment.yaml
+kubectl create -f service.yaml 
+```
+
+c.	Expose nodePort
+i.	kubectl expose deployment hello-world --type=NodePort --name=example-service-hello-word
+4-	Test that the endpoint of the deployed application works.
+i.	curl http://<public-node-ip>:<node-port> 
+
+
+
+
+
+
+
 
 
 
