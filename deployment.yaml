@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: flask-tutorial
-        image: flask-tutorial:latest
+        image: ezequielllado/deploy_1:V0.0.0.1
         ports:
-        - containerPort: 80
+        - containerPort: 8008
