@@ -52,7 +52,7 @@ apt install python3-pip
     ```
     - You will get on terminal:
 
-        Insertar imagen
+     ![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/test_app.PNG)   
 
     - Put In your browser:
 
@@ -63,7 +63,7 @@ apt install python3-pip
   
     - You will get on the browser: 
 
-      Insertar imagen 
+      ![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/firefox.PNG)
 
 #### Packege the image
 
@@ -85,8 +85,8 @@ apt install python3-pip
 
 3) In the browser you will get
 
-    insertar imagen
-docker  .
+    ![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/test_docker.PNG)
+
 4) Tag the Image
 
 ```
@@ -115,7 +115,7 @@ Pushing the image to docker registry
  
 ```
 
-docker push ezequielllado/deploy_1:V0.0.0.1
+docker push <your user>/deploy_1:V0.0.0.1
 
 ```
 
