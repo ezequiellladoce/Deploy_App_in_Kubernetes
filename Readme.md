@@ -22,29 +22,30 @@ In this repository we will see how to deploy and automate a single rest api Flas
 - requirements.txt : file used whn the docker image is built to by to install Flask
 - pipeline.jenkinsfile : file used by jenkind to automate the deploymnet
 
-### Deployment steps
-
-#### Test the rest api app
+### Instlalling and testisng Pre-requirements for the deployment with Jenkins
 
 1) Clone the repo to the machine
-```
-git glone ....
+  ```
+  git clone https://github.com/ezequiellladoce/flask-tutorial.git
 
-```
-2) Install Python pip
+  ```
 
-```
-apt install python3-pip
+### Test the flask app
 
-```
+1) Install Python pip
 
-3)  Install Flask
+  ```
+  apt install python3-pip
+
+  ```
+
+2)  Install Flask
 
    ```
      pip install flask  
    ``` 
 
-4) Test de App
+3) Test de App
 
     - In the same folder that you have the app run the commnand 
 
@@ -66,9 +67,11 @@ apt install python3-pip
 
       ![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/firefox.PNG)
 
-#### Packege the image
+### Packege the image
 
-1) To build the image:
+1) Install docker according https://docs.docker.com/engine/install/
+
+2) To build the image:
 
   ```
   docker build -t flask-tutorial:latest .
@@ -120,10 +123,9 @@ Password:
 docker push <your_user>/deploy_1:V0.0.0.1
 
 ```
+### Kubernetes kind deployment
 
-#### Install kind
-
-##### Install king cluster in your local machine 
+#### Install king cluster in your local machine 
 
 ```
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
@@ -137,7 +139,7 @@ sudo mv ./kind /usr/local/bin
 kind version
 kind v0.10.0 go1.15.7 linux/amd64
 ```
-##### Create the custer and the resurces
+#### Create the custer and the resurces
 
 ```
 kind create cluster --config=config.yaml
@@ -145,17 +147,23 @@ kubectl apply -f deployment.yaml
 kubectl create -f service.yaml 
 ```
 
-#####	Expose nodePort and test the endpoint 
+####	Expose nodePort and test the endpoint 
 
 ```
 kubectl expose deployment hello-world --type=NodePort --name=example-service-hello-word
 curl http://<public-node-ip>:<node-port> 
 ```
  
-#### Automate the previous steps in a pipeline using  Jenkins 
+## Automate the previous steps in a pipeline using  Jenkins  📦
+
+### Install Jenkins
 
 1) Install Jenkins Server according  https://www.jenkins.io/doc/book/installing/linux/ in the same machine that you have installed all the Pre-requirements
-2) Create a new pipeline script and Configure the following parameters
+
+### Create the Pipeline 
+
+1) Create a new pipeline script and Configure the following parameters
+
 insertar imagen
 
 Definition ----> Pipeline Script from GitSCM
