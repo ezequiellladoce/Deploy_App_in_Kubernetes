@@ -1,6 +1,7 @@
 # Deployment of a rest api aplication in a Kubertates cluster
 
-In this repository we will see how to deploy and  automate a single rest api aplication in Kubernetes. 
+In this repository we will see how to deploy and automate a single rest api Flask aplication in Kubernetes kind with Jenkins.
+
 
 ## Tolls / Pre-requirements 📋
 
@@ -10,7 +11,7 @@ In this repository we will see how to deploy and  automate a single rest api apl
 - Kubectl to expose the aplication
 - Jenkins to automathe the deployment
 - Git to store and version control of the code
-- Kubernetes cluster
+- Kind Kubernetes cluster
 
 ## Starting  🚀
 
@@ -153,8 +154,17 @@ curl http://<public-node-ip>:<node-port>
  
 #### Automate the previous steps in a pipeline using  Jenkins 
 
-4.	Jenkisfile Attached
+1) Install Jenkins Server according  https://www.jenkins.io/doc/book/installing/linux/ in the same machine that you have installed all the Pre-requirements
+2) Create a new pipeline script and Configure the following parameters
+insertar imagen
 
+Definition ----> Pipeline Script from GitSCM
+SCM ----> Git
+Repository URL ----> https://github.com/ezequiellladoce/flask-tutorial.git
+Branch Specifier ----> */master
+Script Path ----> pipeline.jenkinsfile
+
+3) Build the Job
 
 
 
