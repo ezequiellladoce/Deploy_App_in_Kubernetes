@@ -1,15 +1,14 @@
-# Deployment of a rest api aplication in a Kubertates cluster
+# Deployment of a rest api application in a Kubertates cluster
 
-In this repository we will see how to deploy and automate a single rest api Flask aplication in Kubernetes kind with Jenkins.
-
+In this repository we will see how to deploy and automate a single rest api Flask application in Kubernetes kind with Jenkins.
 
 ## Tolls / Pre-requirements 📋
 
-- Flask to create the aplication
-- Docker to package the aplication
+- Flask to create the application
+- Docker to package the application
 - Docker hub to stores the  Docker images.
-- Kubectl to expose the aplication
-- Jenkins to automathe the deployment
+- Kubectl to expose the application
+- Jenkins to automate the deployment
 - Git to store and version control of the code
 - Kind Kubernetes cluster
 
@@ -18,16 +17,15 @@ In this repository we will see how to deploy and automate a single rest api Flas
 ### Repo description
  
 - app.py : Application Based in Flask which returns { "hello" : "world" } to a GET request at the endpoint /helloworld
-- Dockerfile : File used to buil the image
-- requirements.txt : file used whn the docker image is built to by to install Flask
-- pipeline.jenkinsfile : file used by jenkind to automate the deploymnet
+- Dockerfile : File used to build the image
+- requirements.txt : file used when the docker image is built to by to install Flask
+- pipeline.jenkinsfile : file used by jenkins to automate the deploymnet
 
-### Instlalling and testisng Pre-requirements for the deployment with Jenkins
+### Installing and testing Pre-requirements for the deployment with Jenkins
 
 1) Clone the repo to the machine
   ```
   git clone https://github.com/ezequiellladoce/flask-tutorial.git
-
   ```
 
 ### Test the flask app
@@ -36,7 +34,6 @@ In this repository we will see how to deploy and automate a single rest api Flas
 
   ```
   apt install python3-pip
-
   ```
 
 2)  Install Flask
@@ -47,12 +44,12 @@ In this repository we will see how to deploy and automate a single rest api Flas
 
 3) Test de App
 
-    - In the same folder that you have the app run the commnand 
+    - In the same folder that you have the app run the command  
 
     ```
      python3 app.py
     ```
-    - You will get on terminal:
+    - You will get on the terminal:
 
      ![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/test_app.PNG)   
 
@@ -60,14 +57,13 @@ In this repository we will see how to deploy and automate a single rest api Flas
 
     ```
         http://localhost:105/hello/
-
     ```
   
     - You will get on the browser: 
 
       ![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/firefox.PNG)
 
-### Packege the image
+### Package the image
 
 1) Install docker according https://docs.docker.com/engine/install/
 
@@ -75,9 +71,6 @@ In this repository we will see how to deploy and automate a single rest api Flas
 
   ```
   docker build -t flask-tutorial:latest .
-  ```
-
-  ```
   docker run -d -p 5000:5000 --name=flask-hello flask-tutorial
   ```
 
@@ -95,7 +88,6 @@ In this repository we will see how to deploy and automate a single rest api Flas
 
 ```
 docker tag flask-tutorial deploy_1/v1.0
-
 ```
 5) Push the Image
 
@@ -113,25 +105,21 @@ docker login
 Login with your Docker ID
 Username : 
 Password:
-
 ```
 
 7) Pushing the image to docker registry
  
 ```
-
 docker push <your_user>/deploy_1:V0.0.0.1
-
 ```
 ### Kubernetes kind deployment
 
-#### Install king cluster in your local machine 
+#### Install king cluster on your local machine 
 
 ```
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin
-
 ```
 2) Test  the installation
 
@@ -166,11 +154,11 @@ curl http://<public-node-ip>:<node-port>
 
 insertar imagen
 
-Definition ----> Pipeline Script from GitSCM
-SCM ----> Git
-Repository URL ----> https://github.com/ezequiellladoce/flask-tutorial.git
-Branch Specifier ----> */master
-Script Path ----> pipeline.jenkinsfile
+- Definition ----> Pipeline Script from GitSCM
+- SCM ----> Git
+- Repository URL ----> https://github.com/ezequiellladoce/flask-tutorial.git
+- Branch Specifier ----> */master
+- Script Path ----> pipeline.jenkinsfile
 
 3) Build the Job
 
