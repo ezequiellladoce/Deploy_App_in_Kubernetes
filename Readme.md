@@ -152,13 +152,16 @@ curl http://<public-node-ip>:<node-port>
 
 1) Create a new pipeline script and Configure the following parameters
 
-insertar imagen
+![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/Jenkins1.PNG)
 
 - Definition ----> Pipeline Script from GitSCM
 - SCM ----> Git
 - Repository URL ----> https://github.com/ezequiellladoce/flask-tutorial.git
 - Branch Specifier ----> */master
 - Script Path ----> pipeline.jenkinsfile
+
+
+![Image text](https://github.com/ezequiellladoce/Deploy_App_in_Kubernetes/blob/master/Images/Jenkins_2.PNG)
 
 3) Build the Job
 
